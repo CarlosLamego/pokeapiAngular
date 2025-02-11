@@ -1,0 +1,90 @@
+<header>
+  <img src="assets/logo.png" alt="logo" />
+</header>
+
+<body>
+  <div class="body-header">
+    <input
+      type="text"
+      (input)="search($event)"
+      placeholder="Pesquisar Pokémons"
+      class="search-input"
+    />
+    <div class="navigation">
+      <button (click)="previousPage()">⬅️</button>
+      page {{ currentPage +1 }} / 13
+      <button (click)="nextPage()">➡️</button>
+    </div>
+  </div>
+
+  <div class="containers-pai">
+    <div class="container-exibicao">
+      <div class="selected-pokemon">
+        <div class="lado-a">
+          @if (selectedPokemon) {
+          <h2>{{ selectedPokemon.name }}</h2>
+          <img
+            [src]="selectedPokemon.sprites.front_default"
+            alt="Imagem do Pokemon Selecionado"
+          />
+          <div>
+            <span>
+              @for (type of selectedPokemon.types; track $index) {
+              {{ type.type.name }}
+              }
+            </span>
+          </div>
+          } @else if (pokemonDefault) {
+          <!-- Exibe o primeiro Pokémon (pokemonDefault) quando nenhum está selecionado -->
+          <h2>{{ pokemonDefault.name }}</h2>
+          <img
+            [src]="pokemonDefault.sprites.front_default"
+            alt="Imagem do Pokemon Padrão"
+          />
+          <div>
+            <span>
+              @for (type of pokemonDefault.types; track $index) {
+              {{ type.type.name }}
+              }
+            </span>
+          </div>
+          }
+        </div>
+        <div class="lado-b">
+          @if (selectedPokemon) {
+          <ul>
+            <li>Id: {{ selectedPokemon.id }}</li>
+            <li>Nome: {{ selectedPokemon.name }} <br /></li>
+            <li>
+              Tipo: @for (type of selectedPokemon.types; track $index) {
+              {{ type.type.name }}
+              }
+            </li>
+            <li>
+              Golpes: @for (move of selectedPokemon.moves | slice:0:10; track
+              $index) { {{ move.move.name }} <br />
+              } @if (selectedPokemon.moves.length > 10) {
+              <p>E mais...</p>
+              }
+            </li>
+          </ul>
+
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="container-cards">
+      @if (isLoading) {
+      <p>Carregando Pokémons...</p>
+      } @else { @if (pokemons.length > 0) { @for (pokemon of pokemons |
+      slice:(currentPage * itemsPerPage):((currentPage + 1) * itemsPerPage); track pokemon.id) {
+      <div class="card-unitario" (click)="selectPokemon(pokemon)">
+        <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card>
+      </div>
+      } } @else {
+      <p>Nenhum Pokémon encontrado.</p>
+      } }
+    </div>
+  </div>
+</body>

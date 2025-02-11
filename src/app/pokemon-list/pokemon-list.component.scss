@@ -1,0 +1,96 @@
+header {
+  background-color: lightgray;
+  border: solid 1px gray;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.body-header {
+  margin-right: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-input {
+  margin: 5px;
+}
+
+.containers-pai {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.container-exibicao {
+  width: 50%;
+}
+
+.container-cards {
+  display: flex;
+  flex-wrap: wrap;
+  text-transform: capitalize;
+  width: 50%;
+  gap: 16px; /* Espaçamento entre os cards */
+  margin: 5px;
+
+}
+
+.container-cards .card-unitario:hover {
+  box-shadow: 0 1px 6px rgba(43, 238, 62, 0.28);
+  border-color: yellowgreen;
+  opacity: 1; /* Card totalmente visível */
+  transform: scale(1.05); /* Aumenta o card em 5% */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra mais intensa */
+
+  
+}
+
+.selected-pokemon {
+  display: flex;
+  justify-content: center;
+  border: solid 3px lightgray;
+  border-radius: 5px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-transform: capitalize;
+  margin: 5px;
+  background-color: #eee;
+  border-top: solid 6px green;
+  border-bottom: solid 6px green;
+}
+
+li {
+  list-style: none;
+}
+
+.lado-a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+}
+
+.lado-b {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-unitario {
+  text-align: center;
+  border: solid 1px lightgray;
+  border-radius: 5px;
+  padding: 10px; /* Ajuste o padding conforme necessário */
+  background-color: #eee;
+  border-top: solid 6px green;
+  border-bottom: solid 6px green;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  flex: 1 1 calc(25% - 16px); /* 4 cards por linha */
+  box-sizing: border-box; /* Garante que padding e bordas não afetem o tamanho */
+  min-width: 100px; /* Define um tamanho mínimo para os cards */
+  max-width: 150px;
+  max-height: 200px;
+  opacity: 0.9; /* Card levemente transparente */
+  transform: scale(1); /* Tamanho normal */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra leve */
+  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Transições combinadas */
+
+}
