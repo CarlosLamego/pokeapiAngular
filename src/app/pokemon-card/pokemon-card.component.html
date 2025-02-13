@@ -1,11 +1,11 @@
-<div>
+<div class="pokemon-card">
   <p class="pokemon-Id">Id: {{ pokemon.id }} </p>
   <img [src]="pokemon.sprites.front_default" alt="Imagem do Pokémon" />
   <br />
   <b class="info"> {{ pokemon.name }}</b>
   <div>
     @for (type of pokemon.types; track $index) {
-    <span> {{ type.type.name }} </span>
+    <span> {{ type.type.name }} </span> <br>
     }
   </div>
 </div>
